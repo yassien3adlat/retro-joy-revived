@@ -1,8 +1,6 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import { Link } from "react-router-dom";
-import heroImage from "@/assets/hero-image.png";
-import heroImageMobile from "@/assets/hero-image-mobile.jpg";
 import aspireLogo from "@/assets/logo-aspire.png";
 import { useIsMobile } from "@/hooks/use-mobile";
 
@@ -14,114 +12,144 @@ export function HeroSection() {
     offset: ["start start", "end start"],
   });
 
-  const imageY = useTransform(scrollYProgress, [0, 1], ["0%", "25%"]);
-  const imageScale = useTransform(scrollYProgress, [0, 1], [1, 1.15]);
-  const contentOpacity = useTransform(scrollYProgress, [0, 0.4], [1, 0]);
-  const contentY = useTransform(scrollYProgress, [0, 0.4], [0, 80]);
-  const overlayOpacity = useTransform(scrollYProgress, [0, 0.8], [0.3, 0.8]);
-
-  const stagger = {
-    hidden: {},
-    visible: { transition: { staggerChildren: 0.15, delayChildren: 0.4 } },
-  };
-
-  const fadeUp = {
-    hidden: { opacity: 0, y: 50 },
-    visible: {
-      opacity: 1, y: 0,
-      transition: { duration: 1.2, ease: [0.16, 1, 0.3, 1] as const },
-    },
-  };
+  const contentOpacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
+  const contentY = useTransform(scrollYProgress, [0, 0.5], [0, -60]);
+  const logoScale = useTransform(scrollYProgress, [0, 0.5], [1, 0.8]);
 
   return (
-    <section ref={ref} className="relative h-screen overflow-hidden">
-      {/* Parallax background */}
-      <motion.div className="absolute inset-0 will-change-transform" style={{ y: imageY, scale: imageScale }}>
-        <img
-          src={isMobile ? heroImageMobile : heroImage}
-          alt="Aspire — Premium fashion collection"
-          className="h-full w-full object-cover object-[65%_center] sm:object-center"
-          sizes="100vw"
+    <section
+      ref={ref}
+      className="relative min-h-screen flex items-center justify-center overflow-hidden bg-background"
+    >
+      {/* Subtle radial glow */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full opacity-[0.04]"
+          style={{
+            background: "radial-gradient(circle, hsl(var(--gold)), transparent 70%)",
+          }}
         />
-      </motion.div>
+      </div>
 
-      {/* Overlays */}
-      <motion.div className="absolute inset-0 bg-foreground/40" style={{ opacity: overlayOpacity }} />
-      <div className="absolute inset-0 bg-gradient-to-t from-background via-background/20 to-transparent" />
-      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-background to-transparent" />
+      {/* Decorative lines */}
+      <motion.div
+        className="absolute top-0 left-1/2 -translate-x-1/2 w-px h-24 bg-gradient-to-b from-transparent via-gold/20 to-transparent"
+        initial={{ scaleY: 0 }}
+        animate={{ scaleY: 1 }}
+        transition={{ delay: 0.8, duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+      />
 
       {/* Content */}
       <motion.div
-        className="relative z-10 container flex h-full flex-col items-center justify-center text-center"
+        className="relative z-10 flex flex-col items-center text-center px-6"
         style={{ opacity: contentOpacity, y: contentY }}
       >
-        <motion.div className="max-w-2xl" variants={stagger} initial="hidden" animate="visible">
-          {/* Rotating Logo */}
-          <motion.div className="flex justify-center mb-6 md:mb-8" variants={fadeUp}>
-            <motion.img
-              src={aspireLogo}
-              alt="Aspire Logo"
-              className="h-20 w-20 md:h-28 md:w-28 lg:h-32 lg:w-32"
-              animate={{ rotate: 360 }}
-              transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
-            />
-          </motion.div>
+        {/* Logo */}
+        <motion.div
+          style={{ scale: logoScale }}
+          initial={{ opacity: 0, scale: 0.6, rotate: -90 }}
+          animate={{ opacity: 1, scale: 1, rotate: 0 }}
+          transition={{ duration: 1.8, ease: [0.16, 1, 0.3, 1] }}
+        >
+          <motion.img
+            src={aspireLogo}
+            alt="Aspire Logo"
+            className="h-28 w-28 md:h-40 md:w-40 lg:h-48 lg:w-48 mb-8 md:mb-10"
+            animate={{ rotate: 360 }}
+            transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
+          />
+        </motion.div>
 
-          {/* Tagline */}
-          <motion.p
-            className="text-[9px] md:text-[11px] font-sans font-medium uppercase tracking-[0.5em] text-foreground/50 mb-5 md:mb-7"
-            variants={fadeUp}
-          >
-            Dress With Class For Less
-          </motion.p>
+        {/* Tagline */}
+        <motion.p
+          className="text-[9px] md:text-[11px] font-sans font-medium uppercase tracking-[0.6em] text-muted-foreground mb-6 md:mb-8"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.6, duration: 1, ease: [0.16, 1, 0.3, 1] }}
+        >
+          Dress With Class For Less
+        </motion.p>
 
-          {/* Main heading */}
-          <motion.h1
-            className="text-[2.5rem] md:text-[4.5rem] lg:text-[6rem] font-serif leading-[0.85] tracking-tight text-foreground"
-            variants={fadeUp}
-          >
-            New Season
-            <br />
-            <span className="italic text-foreground/60">New Rules</span>
-          </motion.h1>
+        {/* Divider */}
+        <motion.div
+          className="w-16 h-px bg-gradient-to-r from-transparent via-gold/40 to-transparent mb-8 md:mb-10"
+          initial={{ scaleX: 0 }}
+          animate={{ scaleX: 1 }}
+          transition={{ delay: 0.9, duration: 1 }}
+        />
 
-          {/* Season badge */}
-          <motion.div className="mt-5 md:mt-7" variants={fadeUp}>
-            <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-foreground/10 bg-background/20">
-              <span className="w-1.5 h-1.5 rounded-full bg-gold animate-pulse-gold" />
-              <span className="text-[10px] md:text-xs font-sans text-foreground/45 tracking-wide">
-                Spring/Summer 2026
-              </span>
+        {/* Main heading */}
+        <motion.h1
+          className="text-[3rem] md:text-[5.5rem] lg:text-[7rem] font-serif leading-[0.85] tracking-tight text-foreground"
+          initial={{ opacity: 0, y: 40 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.4, duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+        >
+          <span className="block">Aspire</span>
+          <span className="block italic text-foreground/50 text-[0.55em] mt-1">to elegance</span>
+        </motion.h1>
+
+        {/* Season badge */}
+        <motion.div
+          className="mt-8 md:mt-10"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1.2, duration: 0.8 }}
+        >
+          <span className="inline-flex items-center gap-2 px-5 py-2 rounded-full border border-border bg-card/60 backdrop-blur-sm">
+            <span className="w-1.5 h-1.5 rounded-full bg-gold animate-pulse-gold" />
+            <span className="text-[10px] md:text-xs font-sans text-muted-foreground tracking-widest uppercase">
+              Spring / Summer 2026
             </span>
-          </motion.div>
+          </span>
+        </motion.div>
 
-          {/* CTA */}
-          <motion.div className="mt-10 md:mt-14 flex items-center justify-center gap-4" variants={fadeUp}>
-            <Link
-              to="/category/men"
-              className="group inline-flex items-center gap-2.5 h-13 md:h-[3.75rem] px-9 md:px-12 bg-foreground text-background text-[10px] md:text-[11px] uppercase tracking-[0.22em] font-sans font-medium rounded-full hover:bg-gold-dark transition-all duration-500 shadow-[0_10px_40px_-8px_hsl(var(--foreground)/0.45)]"
-            >
-              <span>Shop Collection</span>
-              <span className="text-xs group-hover:translate-x-1 transition-transform">→</span>
-            </Link>
+        {/* CTA */}
+        <motion.div
+          className="mt-12 md:mt-16 flex flex-col sm:flex-row items-center gap-4"
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 1.0, duration: 1, ease: [0.16, 1, 0.3, 1] }}
+        >
+          <Link
+            to="/category/men"
+            className="group inline-flex items-center gap-3 h-14 md:h-[3.75rem] px-10 md:px-14 bg-foreground text-background text-[10px] md:text-[11px] uppercase tracking-[0.25em] font-sans font-medium rounded-full hover:bg-gold-dark transition-all duration-500 shadow-[0_12px_40px_-8px_hsl(var(--foreground)/0.35)]"
+          >
+            <span>Explore Collection</span>
+            <span className="text-sm group-hover:translate-x-1.5 transition-transform duration-300">→</span>
+          </Link>
 
-            <Link
-              to="/category/accessories"
-              className="inline-flex items-center gap-2 h-13 md:h-[3.75rem] px-8 md:px-10 text-foreground/80 text-[10px] md:text-[11px] uppercase tracking-[0.22em] font-sans font-medium border border-gold/25 rounded-full hover:border-gold/60 hover:text-foreground transition-all duration-500"
-            >
-              Accessories
-            </Link>
-          </motion.div>
+          <Link
+            to="/category/accessories"
+            className="inline-flex items-center h-14 md:h-[3.75rem] px-8 md:px-10 text-foreground/70 text-[10px] md:text-[11px] uppercase tracking-[0.25em] font-sans font-medium border border-gold/20 rounded-full hover:border-gold/50 hover:text-foreground transition-all duration-500"
+          >
+            Accessories
+          </Link>
         </motion.div>
       </motion.div>
 
-      {/* Bottom line */}
+      {/* Bottom decorative line */}
       <motion.div
-        className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold/30 to-transparent"
+        className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold/25 to-transparent"
         initial={{ scaleX: 0 }}
         animate={{ scaleX: 1 }}
         transition={{ delay: 1.5, duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
       />
+
+      {/* Scroll indicator */}
+      <motion.div
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 2, duration: 1 }}
+      >
+        <span className="text-[9px] uppercase tracking-[0.3em] text-muted-foreground/50 font-sans">Scroll</span>
+        <motion.div
+          className="w-px h-8 bg-gradient-to-b from-gold/30 to-transparent"
+          animate={{ scaleY: [1, 0.5, 1] }}
+          transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+        />
+      </motion.div>
     </section>
   );
 }
