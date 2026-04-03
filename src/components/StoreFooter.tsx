@@ -163,7 +163,7 @@ export function StoreFooter() {
               transition={{ duration: 0.6 }}
             >
               <div className="flex items-center gap-2 mb-4">
-                <span className="font-sans text-sm font-medium uppercase tracking-[0.3em]">Old Money</span>
+                <span className="font-sans text-sm font-medium uppercase tracking-[0.3em]">Aspire</span>
               </div>
               <p className="text-xs text-muted-foreground leading-[1.9] max-w-[280px] font-sans">
                 Timeless pieces for the modern connoisseur. Quiet luxury, crafted with intention and designed to last.
