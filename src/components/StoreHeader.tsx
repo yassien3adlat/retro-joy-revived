@@ -90,9 +90,9 @@ export function StoreHeader() {
             <motion.img
               src={aspireLogo}
               alt="Aspire"
-              className="h-8 md:h-10 w-auto"
+              className="h-10 md:h-14 w-auto"
               animate={{ rotate: 360 }}
-              transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+              transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
             />
           </Link>
 
