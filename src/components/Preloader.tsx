@@ -1,5 +1,6 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useState, useEffect } from "react";
+import aspireLogo from "@/assets/logo-aspire.png";
 
 export function Preloader() {
   const [loading, setLoading] = useState(true);
@@ -32,16 +33,14 @@ export function Preloader() {
             transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] },
           }}
         >
-          {/* Decorative rotating rings */}
-          <motion.div
-            className="absolute w-[250px] h-[250px] md:w-[300px] md:h-[300px] rounded-full border border-border/15"
-            animate={{ rotate: 360, scale: [1, 1.03, 1] }}
-            transition={{ rotate: { duration: 20, repeat: Infinity, ease: "linear" }, scale: { duration: 4, repeat: Infinity } }}
-          />
-          <motion.div
-            className="absolute w-[170px] h-[170px] md:w-[200px] md:h-[200px] rounded-full border border-gold/8"
-            animate={{ rotate: -360 }}
-            transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
+          {/* Rotating logo */}
+          <motion.img
+            src={aspireLogo}
+            alt="Aspire"
+            className="w-20 h-20 md:w-24 md:h-24 mb-8"
+            animate={{ rotate: 360 }}
+            transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
+            initial={{ opacity: 0, scale: 0.8 }}
           />
 
           {/* Brand name */}
@@ -51,7 +50,7 @@ export function Preloader() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           >
-            {"OLD MONEY".split("").map((char, i) => (
+            {"ASPIRE".split("").map((char, i) => (
               <motion.span
                 key={i}
                 className="font-sans text-base md:text-lg font-medium uppercase tracking-[0.3em] text-foreground"
@@ -59,7 +58,7 @@ export function Preloader() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.05 + i * 0.04, duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
               >
-                {char === " " ? "\u00A0" : char}
+                {char}
               </motion.span>
             ))}
           </motion.div>
