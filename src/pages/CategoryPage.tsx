@@ -13,11 +13,6 @@ const categoryMeta: Record<string, { title: string; subtitle: string; descriptio
     subtitle: "Tailored Essentials",
     description: "Refined pieces for the modern gentleman. From classic sneakers to timeless outerwear.",
   },
-  women: {
-    title: "Women",
-    subtitle: "Effortless Elegance",
-    description: "Curated knitwear and essentials designed for understated sophistication.",
-  },
   accessories: {
     title: "Accessories",
     subtitle: "Finishing Touches",
