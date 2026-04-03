@@ -4,9 +4,8 @@ import { ArrowRight } from "lucide-react";
 import { useState } from "react";
 
 const categories = [
-  { title: "Men", subtitle: "Tailored Essentials", image: "/category-men.jpg", path: "/category/men", count: "24 items" },
-  { title: "Women", subtitle: "Effortless Elegance", image: "/category-women.jpg", path: "/category/women", count: "31 items" },
-  { title: "Accessories", subtitle: "Finishing Touches", image: "/category-accessories.jpg", path: "/category/accessories", count: "12 items" },
+  { title: "Men", subtitle: "Tailored Essentials", image: "/category-men.jpg", path: "/category/men", count: "5 items" },
+  { title: "Accessories", subtitle: "Finishing Touches", image: "/category-accessories.jpg", path: "/category/accessories", count: "2 items" },
 ];
 const MotionLink = motion.create(Link);
 
@@ -37,10 +36,8 @@ function CategoryCard({ category, index }: { category: typeof categories[0]; ind
             }`}
           />
 
-          {/* Gradient overlay */}
           <div className="absolute inset-0 bg-gradient-to-t from-foreground/70 via-foreground/20 to-foreground/5" />
 
-          {/* Item count badge */}
           <div
             className={`absolute top-3 right-3 md:top-4 md:right-4 transition-all duration-300 ${
               hovered ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-2"
@@ -51,7 +48,6 @@ function CategoryCard({ category, index }: { category: typeof categories[0]; ind
             </span>
           </div>
 
-          {/* Bottom content */}
           <div className="absolute bottom-0 left-0 right-0 p-3 md:p-6">
             <p
               className={`text-[7px] md:text-[9px] font-sans font-medium uppercase tracking-[0.25em] text-background/40 mb-0.5 md:mb-1 transition-transform duration-400 ease-out ${
@@ -78,7 +74,6 @@ function CategoryCard({ category, index }: { category: typeof categories[0]; ind
               </div>
             </div>
 
-            {/* Reveal line on hover */}
             <div
               className={`mt-2 md:mt-3 h-[1px] bg-gradient-to-r from-gold/60 via-gold-light/40 to-transparent origin-left transition-transform duration-500 ease-out ${
                 hovered ? "scale-x-100" : "scale-x-0"
@@ -115,7 +110,7 @@ export function CategoryShowcase() {
           />
         </motion.div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-5 md:gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 md:gap-8 max-w-4xl mx-auto">
           {categories.map((category, index) => (
             <CategoryCard key={category.title} category={category} index={index} />
           ))}

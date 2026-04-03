@@ -163,7 +163,7 @@ export function StoreFooter() {
               transition={{ duration: 0.6 }}
             >
               <div className="flex items-center gap-2 mb-4">
-                <span className="font-sans text-sm font-medium uppercase tracking-[0.3em]">Old Money</span>
+                <span className="font-sans text-sm font-medium uppercase tracking-[0.3em]">Aspire</span>
               </div>
               <p className="text-xs text-muted-foreground leading-[1.9] max-w-[280px] font-sans">
                 Timeless pieces for the modern connoisseur. Quiet luxury, crafted with intention and designed to last.
@@ -202,7 +202,7 @@ export function StoreFooter() {
               { title: "Shop", links: [
                 { label: "New Arrivals", path: "/category/new-in" },
                 { label: "Men", path: "/category/men" },
-                { label: "Women", path: "/category/women" },
+                
                 { label: "Accessories", path: "/category/accessories" },
               ]},
               { title: "Help", links: [
@@ -252,7 +252,7 @@ export function StoreFooter() {
             transition={{ delay: 0.3 }}
           >
             <p className="text-[11px] text-muted-foreground font-sans">
-              © {currentYear} OLD MONEY. All rights reserved.
+              © {currentYear} ASPIRE. All rights reserved.
             </p>
             <div className="flex items-center gap-4">
               <span className="text-[10px] text-muted-foreground/50 font-sans">Crafted with ✦ in Cairo</span>
