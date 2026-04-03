@@ -8,11 +8,11 @@ import { MobileBottomNav } from "./MobileBottomNav";
 import { useWishlistStore } from "@/stores/wishlistStore";
 import { Badge } from "@/components/ui/badge";
 import { toast } from "sonner";
+import aspireLogo from "@/assets/logo-aspire.png";
 
 const navItems = [
   { label: "New In", path: "/category/new-in" },
   { label: "Men", path: "/category/men" },
-  { label: "Women", path: "/category/women" },
   { label: "Accessories", path: "/category/accessories" },
   { label: "AI Stylist", path: "/outfit-builder", comingSoon: true },
 ];
@@ -87,7 +87,13 @@ export function StoreHeader() {
           </motion.button>
 
           <Link to="/" className="flex items-center gap-2.5">
-            <span className="font-sans text-base md:text-lg font-medium uppercase tracking-[0.3em] text-foreground">Old Money</span>
+            <motion.img
+              src={aspireLogo}
+              alt="Aspire"
+              className="h-8 md:h-10 w-auto"
+              animate={{ rotate: 360 }}
+              transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+            />
           </Link>
 
           <nav className="hidden md:flex items-center gap-5" role="navigation" aria-label="Main navigation">
@@ -194,7 +200,7 @@ export function StoreHeader() {
             >
               <div className="container pt-6 flex-1 flex flex-col">
                 <div className="flex items-center justify-between mb-12">
-                  <span className="font-sans text-sm font-medium uppercase tracking-[0.25em]">Old Money</span>
+                  <img src={aspireLogo} alt="Aspire" className="h-7 w-auto" />
                   <motion.button
                     onClick={() => setMenuOpen(false)}
                     className="p-2 text-foreground hover:bg-foreground/5 rounded-full transition-colors"

@@ -163,7 +163,7 @@ export function HeroSection() {
               to="/category/men"
               className="group inline-flex items-center gap-2.5 h-13 md:h-[3.75rem] px-9 md:px-12 bg-foreground text-background text-[10px] md:text-[11px] uppercase tracking-[0.22em] font-sans font-medium rounded-full hover:bg-gold-dark transition-all duration-600 relative overflow-hidden shadow-[0_10px_40px_-8px_hsl(var(--foreground)/0.45)]"
             >
-              <span className="relative z-10">Shop Men</span>
+              <span className="relative z-10">Shop Now</span>
               <span className="relative z-10 inline-block text-xs">→</span>
               <motion.div
                 className="absolute inset-0 bg-gradient-to-r from-gold-dark to-gold"
@@ -174,10 +174,10 @@ export function HeroSection() {
             </MagneticButton>
 
             <MagneticButton
-              to="/category/women"
+              to="/category/accessories"
               className="group inline-flex items-center gap-2 h-13 md:h-[3.75rem] px-8 md:px-10 text-foreground/80 text-[10px] md:text-[11px] uppercase tracking-[0.22em] font-sans font-medium border border-gold/25 rounded-full hover:border-gold/60 hover:text-foreground transition-all duration-500 relative overflow-hidden"
             >
-              <span className="relative z-10">Shop Women</span>
+              <span className="relative z-10">Accessories</span>
               <motion.div
                 className="absolute inset-0 bg-gold/[0.07]"
                 initial={{ y: "100%" }}

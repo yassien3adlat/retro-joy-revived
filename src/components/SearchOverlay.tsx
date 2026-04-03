@@ -4,12 +4,11 @@ import { useState, useEffect, useRef, useMemo, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import { staticProducts, type Category } from "@/data/staticProducts";
 
-const trendingSearches = ["Linen Shirts", "Summer Collection", "Accessories", "New Arrivals"];
-const recentSearches = ["Cable Knit", "Samba"];
+const trendingSearches = ["Leather Jacket", "Accessories", "New Arrivals", "Pants"];
+const recentSearches = ["Belt", "Perfume"];
 const categoryFilters: Array<{ label: string; value: Category | "all" }> = [
   { label: "All", value: "all" },
   { label: "Men", value: "men" },
-  { label: "Women", value: "women" },
   { label: "Accessories", value: "accessories" },
 ];
 

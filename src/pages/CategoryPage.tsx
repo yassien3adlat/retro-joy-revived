@@ -30,7 +30,7 @@ export default function CategoryPage() {
   const meta = categoryMeta[category || ""];
   const [activeSeason, setActiveSeason] = useState<Season | "all">("all");
 
-  const hasSeasonal = category === "men" || category === "women";
+  const hasSeasonal = category === "men";
 
   const products = category === "new-in"
     ? getNewProducts()

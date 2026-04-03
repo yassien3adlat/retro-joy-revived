@@ -252,7 +252,7 @@ export function StoreFooter() {
             transition={{ delay: 0.3 }}
           >
             <p className="text-[11px] text-muted-foreground font-sans">
-              © {currentYear} OLD MONEY. All rights reserved.
+              © {currentYear} ASPIRE. All rights reserved.
             </p>
             <div className="flex items-center gap-4">
               <span className="text-[10px] text-muted-foreground/50 font-sans">Crafted with ✦ in Cairo</span>
