@@ -202,7 +202,7 @@ export function StoreFooter() {
               { title: "Shop", links: [
                 { label: "New Arrivals", path: "/category/new-in" },
                 { label: "Men", path: "/category/men" },
-                { label: "Women", path: "/category/women" },
+                
                 { label: "Accessories", path: "/category/accessories" },
               ]},
               { title: "Help", links: [
